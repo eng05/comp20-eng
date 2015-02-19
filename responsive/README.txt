@@ -1,0 +1,2 @@
+# responsive
+A web page where if you resize the browser screen width, a different part of the image will be rendered. Created on February 19, 2015 solely by myself after spending about 1.5 hours of work. All aspects of the lab have been correctly implemented. 
