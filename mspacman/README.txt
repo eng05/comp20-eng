@@ -1,0 +1,2 @@
+# mspacman
+Displays a game board with Ms. Pac-Man on it, using Javascript. Created on March 2, 2015 solely by myself after spending about 1 hour of work. All aspects of the lab have been correctly implemented. 
