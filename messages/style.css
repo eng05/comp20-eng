@@ -1,9 +1,9 @@
 h1 {
-font-size: 40px;
+	font-size: 40px;
 }
 
 .messages {
-	font-size: 25px;
+	font-size: 50px;
 	background-color: green;
 	text-align: center;
 }
