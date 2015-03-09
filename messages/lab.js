@@ -12,11 +12,11 @@ function parseData() {
 		for (i=0; i<converted.length; i++) {
 			messagesDiv.innerHTML += "<p>" + converted[i]['content']
 		}
-	}
+	} 
 	else if (request.readyState == 4 && request.status != 200) {
 		alert("Hacked");
 	}
 	else {
-		console.log("Not done yet...");
+		console.log(request.readyState);
 	}
 }
