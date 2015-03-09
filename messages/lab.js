@@ -1,7 +1,7 @@
 function parse() {
 	request = new XMLHttpRequest();
-	request.onreadystatechange = parseData;
 	request.open ("GET", "data.json", true);
+	request.onreadystatechange = parseData;
 	request.send();
 }
 
@@ -17,6 +17,6 @@ function parseData() {
 		alert("Hacked");
 	}
 	else {
-		console.log("Not done yet...");
+		console.log(request.readystate);
 	}
 }
