@@ -17,6 +17,6 @@ function parseData() {
 		alert("Hacked");
 	}
 	else {
-		console.log(request.readyState);
+		console.log(request.status);
 	}
 }
