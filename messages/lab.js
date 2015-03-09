@@ -16,7 +16,8 @@ function parseData() {
 	else if (request.readyState == 4 && request.status != 200) {
 		alert("Hacked");
 	}
+	/*
 	else {
 		console.log("Not done yet");
-	}
+	} */
 }
