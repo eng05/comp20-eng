@@ -2,8 +2,8 @@ h1 {
 	font-size: 40px;
 }
 
-#messagesDiv {
+#messages {
 	font-size: 25px;
-	background-color: green;
+	background-color: yellow;
 	font-weight: bold;
 }
