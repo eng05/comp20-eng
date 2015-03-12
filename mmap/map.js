@@ -45,7 +45,7 @@ function renderMap() {
 			marker = new google.maps.Marker({
 				position: me,
 				icon: unique,
-				title: myLogin + ":\n I Am Here!"
+				title: myLogin + ": I Am Here!"
 			});
 			marker.setMap(map);
 			google.maps.event.addListener(marker, 'click', function() {
