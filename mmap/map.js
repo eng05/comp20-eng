@@ -50,7 +50,6 @@ function renderMap() {
 	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
-	console.log("I am sent");
 }
 
 function otherStudents(text) {
@@ -71,4 +70,5 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 		title: "Over There!"
 	});
 	otherMarker.setMap(map);
+	console.log("I am made");
 }
