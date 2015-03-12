@@ -70,5 +70,9 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 		title: "Over There!"
 	});
 	otherMarker.setMap(map);
+	google.maps.event.addListener(otherMarker, 'click', function() {
+				infowindow.setContent(otherMarker.title);
+				infowindow.open(map, otherMarker);
+			});
 	console.log("I am made");
 }
