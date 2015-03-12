@@ -4,7 +4,7 @@ var myLogin = "IMConnell";
 var request = new XMLHttpRequest();
 var me = new google.maps.LatLng(myLat, myLng);
 var myOptions = {
-	zoom: 13, 
+	zoom: 8, 
 	center: me,
 	mapTypeId: google.maps.MapTypeId.ROADMAP
 };
