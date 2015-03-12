@@ -87,11 +87,11 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 function findDistance(otherLat, otherLng) {
 	var R = 6371; // km 
 var x1 = otherLat-myLat;
-var dLat = x1.toRad();  
+var dLat = toRad(x1);  
 var x2 = otherLng-myLng;
-var dLon = x2.toRad();  
+var dLon = toRad(x2);  
 var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
-                Math.cos(myLat.toRad()) * Math.cos(otherLat.toRad()) * 
+                Math.cos(toRad(myLat)) * Math.cos(toRad(otherLat)) * 
                 Math.sin(dLon/2) * Math.sin(dLon/2);  
 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 var d = R * c; 
