@@ -62,12 +62,14 @@ function renderMap() {
 function otherStudents(text) {
 	data = JSON.parse(text);
 	for (i=0; i<data.length; i++) {
-		otherLogin=data[i]["login"];
-		otherLat=data[i]["lat"];
-		otherLng=data[i]["lng"];
-		otherTime=data[i]["created_at"];
-		makeMarkers(otherLogin, otherLat, otherLng, otherTime);
+		if (data[i]["login"] != myLogin) {
+			otherLogin=data[i]["login"];
+			otherLat=data[i]["lat"];
+			otherLng=data[i]["lng"];
+			otherTime=data[i]["created_at"];
+			makeMarkers(otherLogin, otherLat, otherLng, otherTime);
 		}
+	}
 }
 
 function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
