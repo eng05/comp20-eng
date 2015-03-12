@@ -53,8 +53,8 @@ function renderMap() {
 	console.log("I am sent");
 }
 
-function otherStudents(request.responseText) {
-	data = JSON.parse(request.responseText);
+function otherStudents(text) {
+	data = JSON.parse(text);
 	for (i=0; i<data.length; i++) {
 		otherLogin=data[i]["login"];
 		otherLat=data[i]["lat"];
