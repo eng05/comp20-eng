@@ -40,6 +40,7 @@ function renderMap() {
 	                 scaledSize: new google.maps.Size(20, 20), 
 	                 origin: new google.maps.Point(0,0), 
 	         };
+	         console.log("HI")
 			marker = new google.maps.Marker({
 				position: me,
 				icon: unique,
