@@ -98,3 +98,7 @@ var d = R * c;
 var roundedDist = Math.round(d);
 		return roundedDist; 
 }
+
+	function toRad (x) {
+		return x * Math.PI / 180;
+	}
