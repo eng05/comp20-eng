@@ -48,7 +48,7 @@ function renderMap() {
 	}
 	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
+	console.log("I am done");
 	marker.setMap(map);
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
 }
