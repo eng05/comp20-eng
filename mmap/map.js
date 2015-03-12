@@ -37,10 +37,9 @@ function renderMap() {
 		if (request.readyState == 4 && request.status == 200) {
 			var unique = {
 	                 url: "smiley.jpg",
-	                 scaledSize: new google.maps.Size(20, 20), 
-	                 origin: new google.maps.Point(0,0), 
+	                 //scaledSize: new google.maps.Size(20, 20), 
+	                 //origin: new google.maps.Point(0,0), 
 	         };
-	         console.log("HI")
 			marker = new google.maps.Marker({
 				position: me,
 				icon: unique,
