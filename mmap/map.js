@@ -57,9 +57,9 @@ function otherStudents(request.responseText) {
 	data = JSON.parse(request.responseText);
 	for (i=0; i<data.length; i++) {
 		otherLogin=data[i]["login"];
-		otherLat=[i]["lat"];
-		otherLng=[i]["lng"];
-		otherTime=[i]["created_at"];
+		otherLat=data[i]["lat"];
+		otherLng=data[i]["lng"];
+		otherTime=data[i]["created_at"];
 		makeMarkers(otherLogin, otherLat, otherLng, otherTime);
 		}
 }
