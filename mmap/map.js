@@ -34,8 +34,6 @@ function getMyLocation() {
 function renderMap() {
 	me = new google.maps.LatLng(myLat, myLng);
 	map.panTo(me);
-		request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
 			otherStudents(request.responseText);
@@ -56,8 +54,8 @@ function renderMap() {
 			});
 		}
 	}
-	//request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
-	//request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
 }
 
