@@ -30,3 +30,25 @@ function getMyLocation() {
 	}
 }
 
+function renderMap() {
+	me = new google.maps.LatLng(myLat, myLng);
+	map.panTo(me);
+	request.onreadystatechange = function {
+		if (request.readyState == 4 && request.status == 200) {
+			var distance = jsonparse(request.responseText);
+			marker = new google.maps.Marker({
+				position: me,
+				title: "I Am Here!"
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(marker.title);
+				infowindow.open(map, marker);
+			});
+		}
+	}
+	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	marker.setMap(map);
+	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
+}
