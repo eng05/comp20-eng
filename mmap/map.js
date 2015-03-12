@@ -62,12 +62,11 @@ function renderMap() {
 function otherStudents(text) {
 	data = JSON.parse(text);
 	for (i=0; i<data.length; i++) {
-		//if (data[i]["login"] != myLogin) {
+		if (data[i]["login"] != myLogin) {
 			otherLogin=data[i]["login"];
 			otherLat=data[i]["lat"];
 			otherLng=data[i]["lng"];
 			otherTime=data[i]["created_at"];
-		if (data[i]["login"] != myLogin) {
 			makeMarkers(otherLogin, otherLat, otherLng, otherTime);
 		}
 	}
