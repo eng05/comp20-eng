@@ -39,7 +39,7 @@ function renderMap() {
 			otherStudents(request.responseText);
 			var unique = {
 	                 url: "smiley.png",
-	                 scaledSize: new google.maps.Size(30, 30), 
+	                 scaledSize: new google.maps.Size(35, 35), 
 	                 origin: new google.maps.Point(0,0)
 	         };
 			marker = new google.maps.Marker({
