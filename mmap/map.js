@@ -1,5 +1,6 @@
 var myLat = 0;
 var myLng = 0;
+var myLogin = "IMConnell";
 var request = new XMLHttpRequest();
 var me = new google.maps.LatLng(myLat, myLng);
 var myOptions = {
@@ -44,7 +45,7 @@ function renderMap() {
 			marker = new google.maps.Marker({
 				position: me,
 				icon: unique,
-				title: "I Am Here!"
+				title: myLogin + <br> + "I Am Here!"
 			});
 			marker.setMap(map);
 			google.maps.event.addListener(marker, 'click', function() {
