@@ -42,7 +42,7 @@ function renderMap() {
 	         };
 			marker = new google.maps.Marker({
 				position: me,
-				icon: unique;
+				icon: unique,
 				title: "I Am Here!"
 			});
 			marker.setMap(map);
