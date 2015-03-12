@@ -35,7 +35,7 @@ function renderMap() {
 	map.panTo(me);
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
-			var distance = jsonparse(request.responseText);
+			//var distance = jsonparse(request.responseText);
 			marker = new google.maps.Marker({
 				position: me,
 				title: "I Am Here!"
