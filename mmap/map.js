@@ -85,7 +85,7 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 }
 
 function findDistance(otherLat, otherLng) {
-	var R = 6371; // km 
+	var R = 3958.76 // 6371km = 3958.76 miles
 var x1 = otherLat-myLat;
 var dLat = toRad(x1);  
 var x2 = otherLng-myLng;
