@@ -72,13 +72,29 @@ function otherStudents(text) {
 
 function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 	student = new google.maps.LatLng(otherLat, otherLng);
+	distance = findDistance(otherLat, otherLng);
 	otherMarker = new google.maps.Marker({
 		position: student,
-		title: otherLogin
+		title: otherLogin + " " + distance
 	});
 	otherMarker.setMap(map);
 	google.maps.event.addListener(otherMarker, 'click', function() {
 				infowindow.setContent(this.title);
 				infowindow.open(map, this);
 			});
+}
+
+function findDistance(otherLat, otherLng) {
+	var R = 6371; // km 
+var x1 = otherLat-myLat;
+var dLat = x1.toRad();  
+var x2 = otherLng-myLng;
+var dLon = x2.toRad();  
+var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(myLat.toRad()) * Math.cos(otherLat.toRad()) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);  
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+var d = R * c; 
+var roundedDist = Math.round(d);
+		return roundedDist; 
 }
