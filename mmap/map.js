@@ -35,8 +35,14 @@ function renderMap() {
 	map.panTo(me);
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
+			var unique = {
+	                 url: "smiley.jpg",
+	                 scaledSize: new google.maps.Size(20, 20), 
+	                 origin: new google.maps.Point(0,0), 
+	         };
 			marker = new google.maps.Marker({
 				position: me,
+				icon: unique;
 				title: "I Am Here!"
 			});
 			marker.setMap(map);
