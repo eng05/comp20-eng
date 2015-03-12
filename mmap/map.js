@@ -33,7 +33,7 @@ function getMyLocation() {
 function renderMap() {
 	me = new google.maps.LatLng(myLat, myLng);
 	map.panTo(me);
-	request.onreadystatechange = function {
+	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
 			var distance = jsonparse(request.responseText);
 			marker = new google.maps.Marker({
