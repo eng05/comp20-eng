@@ -40,6 +40,7 @@ function renderMap() {
 				position: me,
 				title: "I Am Here!"
 			});
+			marker.setMap(map);
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(marker.title);
 				infowindow.open(map, marker);
@@ -48,7 +49,6 @@ function renderMap() {
 	}
 	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	marker.setMap(map);
-	console.log("I am set");
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
+	console.log("I am sent");
 }
