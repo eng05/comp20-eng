@@ -35,7 +35,6 @@ function renderMap() {
 	map.panTo(me);
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
-			//var distance = jsonparse(request.responseText);
 			marker = new google.maps.Marker({
 				position: me,
 				title: "I Am Here!"
@@ -45,10 +44,31 @@ function renderMap() {
 				infowindow.setContent(marker.title);
 				infowindow.open(map, marker);
 			});
+			otherStudents(request.responseText);
 		}
 	}
 	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
 	console.log("I am sent");
+}
+
+function otherStudents(request.responseText) {
+	data = JSON.parse(request.responseText);
+	for (i=0; i<data.length; i++) {
+		otherLogin=data[i]["login"];
+		otherLat=[i]["lat"];
+		otherLng=[i]["lng"];
+		otherTime=[i]["created_at"];
+		makeMarkers(otherLogin, otherLat, otherLng, otherTime);
+		}
+}
+
+function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
+	student = new google.maps.LatLng(otherLat, otherLng);
+	otherMarker = new google.maps.Marker({
+		position: me,
+		title: "Over There!"
+	});
+	otherMarker.setMap(map);
 }
