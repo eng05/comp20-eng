@@ -75,7 +75,7 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 	distance = findDistance(otherLat, otherLng);
 	otherMarker = new google.maps.Marker({
 		position: student,
-		title: otherLogin + " is " + distance " miles away from you"
+		title: otherLogin + " is " + distance + " miles away from you"
 	});
 	otherMarker.setMap(map);
 	google.maps.event.addListener(otherMarker, 'click', function() {
