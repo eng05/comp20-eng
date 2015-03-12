@@ -67,12 +67,11 @@ function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 	student = new google.maps.LatLng(otherLat, otherLng);
 	otherMarker = new google.maps.Marker({
 		position: student,
-		title: "Over There!"
+		title: otherLogin
 	});
 	otherMarker.setMap(map);
 	google.maps.event.addListener(otherMarker, 'click', function() {
 				infowindow.setContent(this.title);
 				infowindow.open(map, this);
 			});
-	console.log("I am made");
 }
