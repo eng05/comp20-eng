@@ -66,7 +66,7 @@ function otherStudents(text) {
 function makeMarkers(otherLogin, otherLat, otherLng, otherTime) {
 	student = new google.maps.LatLng(otherLat, otherLng);
 	otherMarker = new google.maps.Marker({
-		position: me,
+		position: student,
 		title: "Over There!"
 	});
 	otherMarker.setMap(map);
