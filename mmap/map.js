@@ -91,14 +91,14 @@ var dLat = toRad(x1);
 var x2 = otherLng-myLng;
 var dLon = toRad(x2);  
 var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
-                Math.cos(toRad(myLat)) * Math.cos(toRad(otherLat)) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2);  
+		Math.cos(toRad(myLat)) * Math.cos(toRad(otherLat)) * 
+		Math.sin(dLon/2) * Math.sin(dLon/2);  
 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 var d = R * c; 
-var roundedDist = Math.round(d);
-		return roundedDist; 
+var roundedDist = Math.round(d*100)/100;
+return roundedDist; 
 }
 
-	function toRad (x) {
-		return x * Math.PI / 180;
-	}
+function toRad (x) {
+	return x * Math.PI / 180;
+}
