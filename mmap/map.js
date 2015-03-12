@@ -35,6 +35,7 @@ function renderMap() {
 	map.panTo(me);
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
+			otherStudents(request.responseText);
 			var unique = {
 	                 url: "smiley.jpg",
 	                 //scaledSize: new google.maps.Size(20, 20), 
@@ -50,7 +51,6 @@ function renderMap() {
 				infowindow.setContent(marker.title);
 				infowindow.open(map, marker);
 			});
-			otherStudents(request.responseText);
 		}
 	}
 	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
