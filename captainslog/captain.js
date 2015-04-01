@@ -1,3 +1,5 @@
  $(document).ready(function(){
-   // Your code here
+ 	txt = $("#msg").value;
+ 	localStorage[new Date().getTime()] = txt;
+ 	$("#log").prepend("txt");
  });
