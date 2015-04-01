@@ -7,18 +7,26 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 	 $(document).ready(function(){
-	 	txt = $("#msg").val;
+	 	$("#msg").change(function() {
+	 	var txt = $("#msg").val();
 	 	localStorage.setItem(new Date().getTime(), txt);
+	 	console.log(txt);
 	 	reload();
-	});
+	 	});
+	 });
+
 	 function reload() {
-	 	 elem = document.getElementById("log");
-		output = "";
-		for (key in localStorage) {
-			output = output + "<p>" + localStorage[key] + "</p>\n";
-		}
-		elem.innerHTML = output;
-	}
+	 	$("#log").empty();
+	 	var findKeys = new Array();
+	 	for (var i = 0; i < localStorage.length; i++) {
+	 		findKeys[i] = localStorage.key(i);
+	 	}
+	 	var sortKeys = findKeys.sort(); 
+	 	for (var j = sortKeys.length - 1; j > -1; j--) {
+	 		$("#log").append("<p>" + sortKeys[j] + " - " + localStorage.getItem(sortKeys[j]) + "</p>\n");
+	 	}
+	 }
+
 	 </script>
 </head>
 
