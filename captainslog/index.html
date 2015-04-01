@@ -5,7 +5,21 @@
 <head>
 	<title>Captain's Log</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="captain.js"></script>
+	<script>
+	 $(document).ready(function(){
+	 	txt = $("#msg").val;
+	 	localStorage.setItem(new Date().getTime(), txt);
+	 	reload();
+	});
+	 function reload() {
+	 	 elem = document.getElementById("log");
+		output = "";
+		for (key in localStorage) {
+			output = output + "<p>" + localStorage[key] + "</p>\n";
+		}
+		elem.innerHTML = output;
+	}
+	 </script>
 </head>
 
 <body>
