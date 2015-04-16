@@ -54,7 +54,7 @@ function renderMap() {
 			});
 		}
 	}
-	request.open("POST", "https://secret-about-box.herokuapp.com/sendLocation", true);
+	request.open("POST", "https://immense-refuge-3027.herokuapp.com/sendLocation", true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.send("login=IMConnell&lat=" + myLat + "&lng=" + myLng);
 }
