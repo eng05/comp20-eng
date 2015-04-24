@@ -17,12 +17,15 @@
 <p>This assessment tests the security of <a href="http://tuftsdev.github.io/comp20-sabookire/mmap/">Sylvie's Maruader's Map</a> and the <a href="https://stark-coast-4864.herokuapp.com/">server-side application</a> for it. The Marauder’s Map application retrieves the user’s current location and sends the current location to a database that was also created by Sylvie for assignment 3. The map then displays the locations of people in the class with a marker indicating where they are and how far away they are from the user. The server-side application uses Heroku, Node.js, and the Express web framework. The user’s login, latitude, and longitude are collected and stored inside MongoDB along with the data obtained from other users. Upon request, it displays a list of the check-ins for all logins sorted in descending order by timestamp. I was hired to find security issues within these applications and propose solutions to solve these security issues. In my assessment, I have found a total of 3 security issues.</p>
 
 <h2>Methodology</h2>
+<hr />
 <p>I began this assessment with black box testing, where I tried to hack into or change the data in Marauder’s Map without viewing the source code. This involved using Tamper Data within the browser and curl within the terminal. I then reviewed the source code in order to better understand the security flaws that allowed my hacks to work during black box testing.</p>
 
 <h2>Abstract of Findings</h2>
+<hr />
 <p>Most security issues found within the application were due to failure to validate user input. Users were able to submit scripts and invalid latitudes and longitudes, which could lead to arbitrary and false content being displayed. Users were also able to access private information through an injection attack, which could be disastrous. To resolve these security issues, I would suggest implementing further validation checks of user input.</p>
 
 <h2>Issues Found</h2>
+<hr />
 <h3>1. Issue: Cross Site Scripting (XSS)</h3>
 <ul>
 <li>Location: /sendLocation</li>
@@ -56,6 +59,7 @@
 </ul>
 
 <h2>Conclusion</h2>
+<hr />
 <p>Issues with Marauder’s Map and its associated server side application make it easy for a hacker to run scripts, enter false information, or gather private information from the database. Implementing my suggested resolutions would definitely help make these applications more secure. Even with these changes, a hacker could still enter valid longitude and latitude values that do not represent their real location. The hacker could pretend to be anywhere in the world. Future considerations include utilizing a second location tracker to ensure that the location is accurate. Yet a sophisticated hacker can most likely always try to find a way around it. Having an accurate location is very important to Marauder’s Map because users expect accuracy when using the product. After making the suggested changes, I would highly recommend conducting a follow-up security analysis, which would cost around $250, and follow up with the latest website security developments and vulnerabilities.</p>
 
 </body>
