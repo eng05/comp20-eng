@@ -1,0 +1,2 @@
+# security
+A security assessment of Sylvie Abookire’s Marauder’s Map and the server-side application for it. Created on April 23, 2015 solely by myself after spending about 7 hours of work (2 hours finding vulnerabilities, 5 hours writing it up and converting to HTML). All aspects of the lab have been correctly implemented. 
