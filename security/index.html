@@ -35,23 +35,23 @@
 
 <h3>2. Issue: Falsification of Data</h3>
 <ul>
-<li>Location: /sendLocation
-<li>Severity of issue: Medium. Even though it is quite easy for hackers to submit false data, the program is still able to run normally.
-<li>Description of issue: The user can provide false data that is inaccurate by using Tamper Data or curl. For example, the user can input a latitude and longitude of 999, which clearly does not exist. Although Marauder’s Map simply does not show this user’s marker, it should definitely show an error message if the latitude and longitude are invalid numbers and make sure that the user’s actual location is stored.
+<li>Location: /sendLocation</li>
+<li>Severity of issue: Medium. Even though it is quite easy for hackers to submit false data, the program is still able to run normally.</li>
+<li>Description of issue: The user can provide false data that is inaccurate by using Tamper Data or curl. For example, the user can input a latitude and longitude of 999, which clearly does not exist. Although Marauder’s Map simply does not show this user’s marker, it should definitely show an error message if the latitude and longitude are invalid numbers and make sure that the user’s actual location is stored.</li>
 <li>Proof of vulnerability:</li>
-	<img src="False_data_curl.JPG" alt="Image of curl command used to produce false data" />
-	<img src="False_data.JPG" alt="Proof of successful false data input" />
-<li>Resolution: Server-side input validation. The user can include code <code>“if (lat <= 90 && lat >= -90 && lng <= 180 && lng >= -180)”</code> in order to make sure the latitude and longitude numbers are real, valid numbers.
+	<p><img src="False_data_curl.JPG" alt="Image of curl command used to produce false data" /></p>
+	<p><img src="False_data.JPG" alt="Proof of successful false data input" /></p>
+<li>Resolution: Server-side input validation. The user can include code <code>“if (lat <= 90 && lat >= -90 && lng <= 180 && lng >= -180)”</code> in order to make sure the latitude and longitude numbers are real, valid numbers.</li>
 </ul>
 
 <h3>3. Issue: Injection Attack</h3>
 <ul>
-<li>Location: /location.json
-<li>Severity of issue: High, the user can query the database to access private information without authentication
-<li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all user’s in the system. Although, there is no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss
+<li>Location: /location.json</li>
+<li>Severity of issue: High, the user can query the database to access private information without authentication</li>
+<li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all user’s in the system. Although, there is no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss.</li>
 <li>Proof of vulnerability:</li>
-	<img src="injection_attack.JPG" alt="Proof of successful injection attack" />
-<li>Resolution: Check the post body to see if there are opening and closing brackets in the login input field, such as [$ne]. If there are, ignore the queries containing them and do not save into database. Alternatively, you can also code the brackets to their HTML equivalent.
+	<p><img src="injection_attack.JPG" alt="Proof of successful injection attack" /></p>
+<li>Resolution: Check the post body to see if there are opening and closing brackets in the login input field, such as [$ne]. If there are, ignore the queries containing them and do not save into database. Alternatively, you can also code the brackets to their HTML equivalent.</li>
 </ul>
 
 <h2>Conclusion</h2>
