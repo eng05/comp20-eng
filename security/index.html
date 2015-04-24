@@ -23,25 +23,36 @@
 
 <h2>Issues Found</h2>
 <h3>1. Issue: Cross Site Scripting (XSS)</h3>
-Location: /sendLocation
-Severity of issue: High, hackers can insert unexpected input, execute arbitrary commands and display arbitrary content in a victim user's browser
-Description of issue: Inserting javascript using the script tag would cause the user’s application to run the code and present all users with fraudulent web content. I tested this by inserting <code>&lt;script&gt;alert('HACKED BY ELWIN');&lt;/script&gt;</code> into the login field using curl. Now, every time the page is accessed, an alert with the message “HACKED BY ELWIN” is displayed.
-Proof of vulnerability: 
-Resolution: Remove the ability for data to be interpreted as code by paying attention to the angle brackets. When storing user input, change < to &lt and change > to &gt, which are their html equivalants. By doing so, the application will no longer interpret the script tags as executable. 
+<ul>
+<li>Location: /sendLocation
+<li>Severity of issue: High, hackers can insert unexpected input, execute arbitrary commands and display arbitrary content in a victim user's browser
+<li>Description of issue: Inserting javascript using the script tag would cause the user’s application to run the code and present all users with fraudulent web content. I tested this by inserting <code>&lt;script&gt;alert('HACKED BY ELWIN');&lt;/script&gt;</code> into the login field using curl. Now, every time the page is accessed, an alert with the message “HACKED BY ELWIN” is displayed.
+<li>Proof of vulnerability:</li>
+	<img src="XSS_curl.jpg" alt="Image of curl command used to produce cross site scripting attack" />
+	<img src="XSS_screen.jpg" alt="Proof of successful XSS attack with an alert box stating HACKED BY ELWIN" />
+<li>Resolution: Remove the ability for data to be interpreted as code by paying attention to the angle brackets. When storing user input, change < to &lt and change > to &gt, which are their html equivalants. By doing so, the application will no longer interpret the script tags as executable. 
+</ul>
 
-<h3>Issue: Falsification of Data</h3>
-Location: /sendLocation
-Severity of issue: Medium. Even though it is quite easy for hackers to submit false data, the program is still able to run normally.
-Description of issue: The user can provide false data that is inaccurate by using Tamper Data or curl. For example, the user can input a latitude and longitude of 999, which clearly does not exist. Although Marauder’s Map simply does not show this user’s marker, it should definitely show an error message if the latitude and longitude are invalid numbers and make sure that the user’s actual location is stored.
-Proof of vulnerability:
-Resolution: Server-side input validation. The user can include code “if (lat <= 90 && lat >= -90 && lng <= 180 && lng >= -180)” in order to make sure the latitude and longitude numbers are real, valid numbers.  
+<h3>2. Issue: Falsification of Data</h3>
+<ul>
+<li>Location: /sendLocation
+<li>Severity of issue: Medium. Even though it is quite easy for hackers to submit false data, the program is still able to run normally.
+<li>Description of issue: The user can provide false data that is inaccurate by using Tamper Data or curl. For example, the user can input a latitude and longitude of 999, which clearly does not exist. Although Marauder’s Map simply does not show this user’s marker, it should definitely show an error message if the latitude and longitude are invalid numbers and make sure that the user’s actual location is stored.
+<li>Proof of vulnerability:</li>
+	<img src="False_data_curl.jpg" alt="Image of curl command used to produce false data" />
+	<img src="False_data.jpg" alt="Proof of successful false data input" />
+<li>Resolution: Server-side input validation. The user can include code <code>“if (lat <= 90 && lat >= -90 && lng <= 180 && lng >= -180)”</code> in order to make sure the latitude and longitude numbers are real, valid numbers.
+</ul>
 
-<h3>Issue: Injection Attack</h3>
-Location: /location.json
-Severity of issue: High, the user can query the database to access private information without authentication
-Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all user’s in the system. Although, there is no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss
-Proof of vulnerability:
-Resolution: Check the post body to see if there are opening and closing brackets in the login input field, such as [$ne]. If there are, ignore the queries containing them and do not save into database. Alternatively, you can also code the brackets to their HTML equivalent. 
+<h3>3. Issue: Injection Attack</h3>
+<ul>
+<li>Location: /location.json
+<li>Severity of issue: High, the user can query the database to access private information without authentication
+<li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all user’s in the system. Although, there is no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss
+<li>Proof of vulnerability:</li>
+	<img src="injection_attack.jpg" alt="Proof of successful injection attack" />
+<li>Resolution: Check the post body to see if there are opening and closing brackets in the login input field, such as [$ne]. If there are, ignore the queries containing them and do not save into database. Alternatively, you can also code the brackets to their HTML equivalent.
+</ul>
 
 <h2>Conclusion</h2>
 <p>Issues with Marauder’s Map and its associated server side application make it easy for a hacker to run scripts, enter false information, or gather private information from the database. Implementing my suggested resolutions would definitely help make these applications more secure. Even with these changes, a hacker could still enter valid longitude and latitude values that do not represent their real location. The hacker could pretend to be anywhere in the world. Future considerations include utilizing a second location tracker to ensure that the location is accurate. Yet a sophisticated hacker can most likely always try to find a way around it. Having an accurate location is very important to Marauder’s Map because users expect accuracy when using the product. After making the suggested changes, I would highly recommend conducting a follow-up security analysis, which would cost around $250, and follow up with the latest website security developments and vulnerabilities.</p>
