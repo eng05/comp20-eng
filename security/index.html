@@ -28,7 +28,7 @@
 <hr />
 <h3>1. Issue: Cross Site Scripting (XSS)</h3>
 <ul>
-<li>Location: /sendLocation</li>
+<li>Location: POST /sendLocation and GET /</li>
 <li>Severity of issue: High, hackers can insert unexpected input, execute arbitrary commands and display arbitrary content in a victim user's browser</li>
 <li>Description of issue: Inserting javascript using the script tag would cause the user’s application to run the code and present all users with fraudulent web content. I tested this by inserting <code>&lt;script&gt;alert('HACKED BY ELWIN');&lt;/script&gt;</code> into the login field using curl. Now, every time the page is accessed, an alert with the message “HACKED BY ELWIN” is displayed.</li>
 <li>Proof of vulnerability:</li>
@@ -39,7 +39,7 @@
 
 <h3>2. Issue: Falsification of Data</h3>
 <ul>
-<li>Location: /sendLocation</li>
+<li>Location: POST /sendLocation</li>
 <li>Severity of issue: Medium. Even though it is quite easy for hackers to submit false data, the program is still able to run normally.</li>
 <li>Description of issue: The user can provide false data that is inaccurate by using Tamper Data or curl. For example, the user can input a latitude and longitude of 999, which clearly does not exist. Although Marauder’s Map simply does not show this user’s marker, it should definitely show an error message if the latitude and longitude are invalid numbers and make sure that the user’s actual location is stored.</li>
 <li>Proof of vulnerability:</li>
@@ -50,7 +50,7 @@
 
 <h3>3. Issue: Injection Attack</h3>
 <ul>
-<li>Location: /location.json</li>
+<li>Location: GET /location.json</li>
 <li>Severity of issue: High, the user can query the database to access private information without authentication</li>
 <li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all users in the system. Although there is currently no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss.</li>
 <li>Proof of vulnerability:</li>
