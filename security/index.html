@@ -28,7 +28,7 @@
 <li>Severity of issue: High, hackers can insert unexpected input, execute arbitrary commands and display arbitrary content in a victim user's browser</li>
 <li>Description of issue: Inserting javascript using the script tag would cause the user’s application to run the code and present all users with fraudulent web content. I tested this by inserting <code>&lt;script&gt;alert('HACKED BY ELWIN');&lt;/script&gt;</code> into the login field using curl. Now, every time the page is accessed, an alert with the message “HACKED BY ELWIN” is displayed.</li>
 <li>Proof of vulnerability:</li>
-	<p>><img src="XSS_curl.jpg" alt="Image of curl command used to produce cross site scripting attack" /></p>
+	<p><img src="XSS_curl.JPG" alt="Image of curl command used to produce cross site scripting attack" /></p>
 	<p><img src="XSS_screen.jpg" alt="Proof of successful XSS attack with an alert box stating HACKED BY ELWIN" /></p>
 <li>Resolution: Remove the ability for data to be interpreted as code by paying attention to the angle brackets. When storing user input, change < to &lt and change > to &gt, which are their html equivalants. By doing so, the application will no longer interpret the script tags as executable.</li>
 </ul>
