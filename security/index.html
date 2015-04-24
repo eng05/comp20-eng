@@ -13,6 +13,7 @@
 <h1>Prepared by Elwin Ng on 4/20/2015</h1>
 
 <h2>Introduction</h2>
+<hr />
 <p>This assessment tests the security of <a href="http://tuftsdev.github.io/comp20-sabookire/mmap/">Sylvie's Maruader's Map</a> and the <a href="https://stark-coast-4864.herokuapp.com/">server-side application</a> for it. The Marauder’s Map application retrieves the user’s current location and sends the current location to a database that was also created by Sylvie for assignment 3. The map then displays the locations of people in the class with a marker indicating where they are and how far away they are from the user. The server-side application uses Heroku, Node.js, and the Express web framework. The user’s login, latitude, and longitude are collected and stored inside MongoDB along with the data obtained from other users. Upon request, it displays a list of the check-ins for all logins sorted in descending order by timestamp. I was hired to find security issues within these applications and propose solutions to solve these security issues. In my assessment, I have found a total of 3 security issues.</p>
 
 <h2>Methodology</h2>
