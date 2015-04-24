@@ -10,7 +10,7 @@
 
 <body>
 <h1>Security Assessment of Sylvie Abookire’s Marauder’s Map</h1>
-<h1>Prepared by Elwin Ng on 4/20/2015</h1>
+<h1>Prepared by Elwin Ng on 4/23/2015</h1>
 
 <h2>Introduction</h2>
 <hr />
@@ -52,7 +52,7 @@
 <ul>
 <li>Location: /location.json</li>
 <li>Severity of issue: High, the user can query the database to access private information without authentication</li>
-<li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all user’s in the system. Although, there is no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss.</li>
+<li>Description of issue: The user can type in “/location.json?login[$ne]=anyrandomstring” in order to return information about all users in the system. Although there is currently no private information currently stored, this would be a big problem if there were indeed private login information, passwords, or check-in’s that a hacker should not be able to see and accesss.</li>
 <li>Proof of vulnerability:</li>
 	<p><img src="injection_attack.JPG" alt="Proof of successful injection attack" /></p>
 <li>Resolution: Check the post body to see if there are opening and closing brackets in the login input field, such as [$ne]. If there are, ignore the queries containing them and do not save into database. Alternatively, you can also code the brackets to their HTML equivalent.</li>
@@ -60,7 +60,7 @@
 
 <h2>Conclusion</h2>
 <hr />
-<p>Issues with Marauder’s Map and its associated server side application make it easy for a hacker to run scripts, enter false information, or gather private information from the database. Implementing my suggested resolutions would definitely help make these applications more secure. Even with these changes, a hacker could still enter valid longitude and latitude values that do not represent their real location. The hacker could pretend to be anywhere in the world. Future considerations include utilizing a second location tracker to ensure that the location is accurate. Yet a sophisticated hacker can most likely always try to find a way around it. Having an accurate location is very important to Marauder’s Map because users expect accuracy when using the product. After making the suggested changes, I would highly recommend conducting a follow-up security analysis, which would cost around $250, and follow up with the latest website security developments and vulnerabilities.</p>
+<p>Issues with Marauder’s Map and its associated server side application make it easy for a hacker to run scripts, enter false information, or gather private information from the database. Implementing my suggested resolutions would definitely help make these applications more secure. Even with these changes, a hacker could still enter valid longitude and latitude values that do not represent their real location. The hacker could pretend to be anywhere in the world. Future considerations include utilizing a second location tracker to ensure that the location is accurate. However, a sophisticated hacker will try hard to find a way around it. Having an accurate location is very important to Marauder’s Map because users expect accuracy when using the product. After making the suggested changes, I would highly recommend conducting a follow-up security analysis, which would cost around $250. I also suggest constantly following up with the latest website security developments and vulnerabilities so that you are aware of any hacks that might affect you.</p>
 
 </body>
 </html>
